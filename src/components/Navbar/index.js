@@ -1,5 +1,5 @@
-import Link from "next/link"
-import InputSearch from "./inputSearch"
+import Link from "next/link";
+import InputSearch from "./inputSearch";
 
 const Navbar = () => {
   return (
@@ -9,7 +9,7 @@ const Navbar = () => {
         <InputSearch />
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
