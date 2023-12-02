@@ -1,18 +1,37 @@
+"use client";
+
 import getAnimeResponse from "@/app/service/api-service";
 import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/header";
+import { useEffect, useState } from "react";
+import Pagination from "@/components/Utilities/Pagination";
 
-const Page = async ({ params }) => {
+const Page = ({ params }) => {
   const { keyword } = params;
   const decodedKeyword = decodeURI(keyword);
+  
+  const [page, setPage] = useState(1);
+  const [searchAnime, setSearchAnime] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const searchAnime = await getAnimeResponse('anime', `q=${keyword}`);
+  const fetchData = async () => { 
+    const data = await getAnimeResponse('anime', `q=${keyword}&page=${page}`);
+    setSearchAnime(data);
+    setLoading(true);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [page]);
 
   return (
     <>
       <section>
         <Header title={`Pencarian "${decodedKeyword}"...`} />
         <AnimeList api={searchAnime} />
+        {loading && 
+          <Pagination page={page} lastPage={searchAnime.pagination?.last_visible_page} setPage={setPage}/>
+        }
       </section>
     </>
   );
