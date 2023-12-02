@@ -5,6 +5,7 @@ import Pagination from "@/components/Utilities/Pagination";
 import AnimeList from "@/components/AnimeList";
 import { useEffect, useState } from "react";
 import getAnimeResponse from "../service/api-service";
+import ToTop from "@/components/Utilities/ToTop";
 
 const Page = () => {
   const [page, setPage] = useState(1);
@@ -29,6 +30,9 @@ const Page = () => {
       <AnimeList api={topAnime} />
       {loading && 
         <Pagination page={page} lastPage={topAnime.pagination?.last_visible_page} setPage={setPage}/>
+      }
+      {loading && 
+        <ToTop />
       }
     </>
   );

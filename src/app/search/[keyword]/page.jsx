@@ -5,6 +5,7 @@ import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/header";
 import { useEffect, useState } from "react";
 import Pagination from "@/components/Utilities/Pagination";
+import ToTop from "@/components/Utilities/ToTop";
 
 const Page = ({ params }) => {
   const { keyword } = params;
@@ -31,6 +32,9 @@ const Page = ({ params }) => {
         <AnimeList api={searchAnime} />
         {loading && 
           <Pagination page={page} lastPage={searchAnime.pagination?.last_visible_page} setPage={setPage}/>
+        }
+        {loading && 
+          <ToTop />
         }
       </section>
     </>
