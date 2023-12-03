@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowCircleUp } from "@phosphor-icons/react";
 
 const ToTop = () => {
@@ -14,7 +16,7 @@ const ToTop = () => {
   }
 
   return (
-    <button onClick={handleToTop} className="right-5 bottom-5 fixed">
+    <button onClick={handleToTop} className="right-5 bottom-14 fixed">
       <ArrowCircleUp size={64} className="text-color-primary opacity-50" />
     </button>
   );
