@@ -1,4 +1,4 @@
-import getAnimeResponse from "@/service/api-service";
+import { getAnimeResponse } from "@/service/api-service";
 import Image from "next/image";
 
 const Page = async ({ params: { id } }) => {
