@@ -4,7 +4,7 @@ import Image from "next/image";
 const Page = async ({ params: { id } }) => {
 
   const { data } = await getAnimeResponse(`anime/${id}`);
-  const scoredByData = data.scored_by.toLocaleString('id-ID').replaceAll('.',',');
+  const scoredByData = data.scored_by?.toLocaleString('id-ID').replaceAll('.',',');
   const genres = data.genres.map((genre) => genre.name).join(', ');
 
   return (
