@@ -2,7 +2,7 @@
 
 import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/header";
-import getAnimeResponse from "./service/api-service";
+import getAnimeResponse from "../service/api-service";
 import { useEffect, useState } from "react";
 import ToTop from "@/components/Utilities/ToTop";
 
