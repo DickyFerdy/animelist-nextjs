@@ -26,9 +26,7 @@ const Page = () => {
       <section>
         <Header title="Paling Populer" linkHref="/populer" linkTitle="Lihat Semua" />
         <AnimeList api={topAnime} />
-        {loading && 
-          <ToTop />
-        }
+        {loading ? <ToTop /> : null}
       </section>
     </>   
   );

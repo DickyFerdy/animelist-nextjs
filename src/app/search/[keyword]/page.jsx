@@ -30,12 +30,8 @@ const Page = ({ params }) => {
       <section>
         <Header title={`Pencarian "${decodedKeyword}"...`} />
         <AnimeList api={searchAnime} />
-        {loading && 
-          <Pagination page={page} lastPage={searchAnime.pagination?.last_visible_page} setPage={setPage}/>
-        }
-        {loading && 
-          <ToTop />
-        }
+        {loading ? <Pagination page={page} lastPage={searchAnime.pagination?.last_visible_page} setPage={setPage}/> : null}
+        {loading ? <ToTop /> : null}
       </section>
     </>
   );
