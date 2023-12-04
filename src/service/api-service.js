@@ -4,8 +4,8 @@ const getAnimeResponse = async (resource, query) => {
   return data;
 }
 
-const getNestedAnimeResponse = async (resource, query, objectProperty) => {
-  const response = await getAnimeResponse(resource, query);
+const getNestedAnimeResponse = async (resource, objectProperty) => {
+  const response = await getAnimeResponse(resource);
   return response.data.flatMap(value => value[objectProperty]);
 }
 
