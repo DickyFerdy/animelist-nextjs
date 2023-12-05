@@ -2,18 +2,22 @@
 
 import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/header";
-import getAnimeResponse from "../service/api-service";
+import { getAnimeResponse, getNestedAnimeResponse, reproduce } from "../service/api-service";
 import { useEffect, useState } from "react";
 import ToTop from "@/components/Utilities/ToTop";
 
 const Page = () => {
 
   const [topAnime, setTopAnime] = useState([]);
+  const [RecomAnime, setRecomAnime] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const fetchData = async () => { 
-    const data = await getAnimeResponse('top/anime', `limit=10`);
-    setTopAnime(data);
+  const fetchData = async () => {
+    const dataTopAnime = await getAnimeResponse('top/anime', `limit=10`);
+    const dataRecommendedAnime = await getNestedAnimeResponse('recommendations/anime', 'entry');
+    const recommendedAnime = reproduce(dataRecommendedAnime, 5);
+    setTopAnime(dataTopAnime);
+    setRecomAnime(recommendedAnime);
     setLoading(true);
   }
 
@@ -24,9 +28,13 @@ const Page = () => {
   return (
     <>
       <section>
-        <Header title="Paling Populer" linkHref="/populer" linkTitle="Lihat Semua" />
+        <Header title="Most Popular" linkHref="/popular" linkTitle="View All" />
         <AnimeList api={topAnime} />
         {loading ? <ToTop /> : null}
+      </section>
+      <section>
+        <Header title="Recommendation" />
+        <AnimeList api={RecomAnime} />
       </section>
     </>   
   );
