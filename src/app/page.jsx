@@ -30,12 +30,12 @@ const Page = () => {
       <section>
         <Header title="Most Popular" linkHref="/popular" linkTitle="View All" />
         <AnimeList api={topAnime} />
-        {loading ? <ToTop /> : null}
       </section>
       <section>
         <Header title="Recommendation" />
         <AnimeList api={RecomAnime} />
       </section>
+      {loading ? <ToTop /> : null}
     </>   
   );
 };
