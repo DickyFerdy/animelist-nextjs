@@ -9,7 +9,19 @@ const getNestedAnimeResponse = async (resource, objectProperty) => {
   return response.data.flatMap(value => value[objectProperty]);
 }
 
+const reproduce = (data, gap) => {
+  const first = ~~(Math.random() * (data.length - gap));
+  const last = first + gap;
+
+  const response = {
+    data: data.slice(first, last)
+  }
+
+  return response;
+}
+
 export {
   getAnimeResponse,
-  getNestedAnimeResponse
+  getNestedAnimeResponse,
+  reproduce
 }; 
