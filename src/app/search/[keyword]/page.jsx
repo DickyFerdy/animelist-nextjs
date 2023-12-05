@@ -28,7 +28,7 @@ const Page = ({ params }) => {
   return (
     <>
       <section>
-        <Header title={`Pencarian "${decodedKeyword}"...`} />
+        <Header title={`Result "${decodedKeyword}"...`} />
         <AnimeList api={searchAnime} />
         {loading ? <Pagination page={page} lastPage={searchAnime.pagination?.last_visible_page} setPage={setPage}/> : null}
         {loading ? <ToTop /> : null}

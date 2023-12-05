@@ -24,7 +24,7 @@ const Page = () => {
 
   return (
     <>
-      {loading ? <HeaderMenu title={`Anime Terpopuler #${page}`}/> : null}
+      {loading ? <HeaderMenu title={`Most Popular Anime #${page}`}/> : null}
       <AnimeList api={topAnime} />
       {loading ? <Pagination page={page} lastPage={topAnime.pagination?.last_visible_page} setPage={setPage}/> : null}
       {loading? <ToTop /> : null}
