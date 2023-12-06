@@ -10,7 +10,7 @@ const getNestedAnimeResponse = async (resource, objectProperty) => {
 }
 
 const reproduce = (data, gap) => {
-  const first = ~~(Math.random() * (data.length - gap));
+  const first = ~~(Math.random() * (data.length - gap) + 1);
   const last = first + gap;
 
   const response = {
