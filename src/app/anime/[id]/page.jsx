@@ -11,7 +11,7 @@ const Page = async ({ params: { id } }) => {
     <>
       <div className="p-5">
         <div className="text-center">
-          <h1 className="text-2xl text-color-primary">{data.title}</h1>
+          <h1 className="md:text-2xl text-3xl text-color-primary">{data.title}</h1>
         </div>
         <div className="flex flex-col py-4 gap-6">
           <div className="flex justify-center items-center">
@@ -35,31 +35,31 @@ const Page = async ({ params: { id } }) => {
                   <p className="text-xl font-bold text-color-red-500">#{data.popularity}</p>
                 </div>
               </div>
-              <div className="border-r-2 border-color-secondary px-6">
+              <div className="border-r-2 border-color-secondary px-6 md:text-sm text-base">
                 <div className="border-b-2 border-color-secondary py-2">
-                  <h3 className="text-sm">Title in English:</h3>
+                  <h3>Title in English:</h3>
                   <p className="font-bold">{data.title_english}</p>
                 </div>
                 <div className="py-2">
-                  <h3 className="text-sm">Title in Japan:</h3>
+                  <h3>Title in Japan:</h3>
                   <p className="font-bold">{data.title_japanese}</p>
                 </div>
               </div>
-              <div className="border-r-2 border-color-secondary px-6">
-                <p>Type: {data.type}</p>
-                <p>Episode: {data.episodes}</p>
-                <p>Duration: {data.duration}</p>
-                <p>Status: {data.status}</p>
+              <div className="border-r-2 border-color-secondary px-6 md:text-base text-lg">
+                <p>Type: <span className="font-bold">{data.type}</span></p>
+                <p>Episode: <span className="font-bold">{data.episodes}</span></p>
+                <p>Duration: <span className="font-bold">{data.duration}</span></p>
+                <p>Status: <span className="font-bold">{data.status}</span></p>
               </div>
-              <div className="border-r-2 border-color-secondary px-6">
-                <p>Rating: {data.rating}</p>
-                <p>Season: {data.season}</p>
-                <p>Year: {data.year}</p>
-                <p>Source: {data.source}</p>
+              <div className="border-r-2 border-color-secondary px-6 md:text-base text-lg">
+                <p>Rating: <span className="font-bold">{data.rating}</span></p>
+                <p>Season: <span className="font-bold">{data.season}</span></p>
+                <p>Year: <span className="font-bold">{data.year}</span></p>
+                <p>Source: <span className="font-bold">{data.source}</span></p>
               </div>
-              <div className="px-6">
+              <div className="px-6 md:text-base text-lg">
                 <h3>Genres:</h3>
-                <p>{genres}</p>
+                <p className="font-bold">{genres}</p>
               </div>
             </div>
             <div className="border border-color-secondary rounded py-4 px-5">
