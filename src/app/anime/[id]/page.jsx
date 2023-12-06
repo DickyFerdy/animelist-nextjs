@@ -1,5 +1,4 @@
 import { getAnimeResponse } from "@/service/api-service";
-import Image from "next/image";
 
 const Page = async ({ params: { id } }) => {
 
@@ -11,11 +10,11 @@ const Page = async ({ params: { id } }) => {
     <>
       <div className="p-5">
         <div className="text-center">
-          <h1 className="md:text-2xl text-3xl text-color-primary">{data.title}</h1>
+          <h1 className="text-2xl text-color-primary">{data.title}</h1>
         </div>
         <div className="flex flex-col py-4 gap-6">
           <div className="flex justify-center items-center">
-            <Image src={data.images.webp.image_url} width={300} height={300} alt={data.images.jpg.image_url} title={data.title}/>
+            <img className="md:h-96 h-80" src={data.images.webp.image_url} alt="..." title={data.title}/>
           </div>
           <div className="text-color-primary flex flex-col gap-2">
             <div className="border border-color-secondary rounded flex md:justify-center items-center py-4 overflow-x-auto">
