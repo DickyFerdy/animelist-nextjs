@@ -24,10 +24,14 @@ const Page = () => {
 
   return (
     <>
-      {loading ? <HeaderMenu title={`Most Popular Anime #${page}`}/> : null}
-      <AnimeList api={topAnime} />
-      {loading ? <Pagination page={page} lastPage={topAnime.pagination?.last_visible_page} setPage={setPage}/> : null}
-      {loading? <ToTop /> : null}
+      {loading ? 
+        <div>
+          <HeaderMenu title={`Most Popular Anime #${page}`}/>
+          <AnimeList api={topAnime} />
+          <Pagination page={page} lastPage={topAnime.pagination?.last_visible_page} setPage={setPage}/>
+          <ToTop />
+        </div> : null
+      }
     </>
   );
 };
