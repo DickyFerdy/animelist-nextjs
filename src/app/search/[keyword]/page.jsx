@@ -28,10 +28,14 @@ const Page = ({ params }) => {
   return (
     <>
       <section>
-        <Header title={`Result "${decodedKeyword}"...`} />
-        <AnimeList api={searchAnime} />
-        {loading ? <Pagination page={page} lastPage={searchAnime.pagination?.last_visible_page} setPage={setPage}/> : null}
-        {loading ? <ToTop /> : null}
+        {loading ?
+          <div>
+            <Header title={`Result "${decodedKeyword}"...`} />
+            <AnimeList api={searchAnime} />
+            <Pagination page={page} lastPage={searchAnime.pagination?.last_visible_page} setPage={setPage}/>
+            <ToTop />
+          </div> : null
+        }
       </section>
     </>
   );
