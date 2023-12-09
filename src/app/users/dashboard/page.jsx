@@ -5,9 +5,7 @@ const Page = async () => {
 
   return (
     <div className="text-color-primary">
-      {user ?
-        <h1>Welcome {user?.name}</h1> : <h1>Please Login</h1>
-      }
+      <h1>Welcome {user?.name}</h1>
     </div>
   );
 };
