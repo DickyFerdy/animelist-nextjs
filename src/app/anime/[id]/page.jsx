@@ -1,14 +1,34 @@
+import CollectionButton from "@/components/AnimeList/collectionButton";
+import BookmarkButton from "@/components/Utilities/Bookmark";
 import { getAnimeResponse } from "@/service/api-service";
+import { authUserSession } from "@/service/auth-service";
+import prisma from "@/service/prisma";
 
 const Page = async ({ params: { id } }) => {
 
   const { data } = await getAnimeResponse(`anime/${id}`);
   const scoredByData = data.scored_by?.toLocaleString('id-ID').replaceAll('.',',');
   const genres = data.genres.map((genre) => genre.name).join(', ');
+  const user = await authUserSession();
+  const collection = await prisma.collection.findFirst({
+    where: {
+      user_email: user?.email,
+      anime_mal_id: id
+    }
+  });
 
   return (
     <>
       <div className="p-5">
+        <div>
+          { 
+            user ? 
+              collection ?
+                <BookmarkButton />
+              : <CollectionButton anime_mal_id={id} user_email={user?.email} anime_image={data.images.webp.image_url} anime_title={data.title}/>
+            : null
+          }
+        </div>
         <div className="text-center">
           <h1 className="text-2xl text-color-primary">{data.title}</h1>
         </div>
