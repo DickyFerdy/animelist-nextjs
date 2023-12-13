@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "vercel-build": "prisma generated && echo start",
+    "postinstall": "prisma generated"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.15",
