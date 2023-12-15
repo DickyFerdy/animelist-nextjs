@@ -33,6 +33,7 @@ const AddCollectionButton = ({ anime_mal_id, user_email, anime_image, anime_titl
     } catch (e) {
       throw new Error(e.message);
     };
+    console.log(`add ${isCreated}`)
   };
 
   return (

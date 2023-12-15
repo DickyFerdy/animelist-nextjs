@@ -5,7 +5,7 @@ import { useState } from "react";
 import AddCollectionButton from "./addCollectionButton";
 
 const RemoveCollectionButton = ({ anime_mal_id, user_email, anime_image, anime_title }) => {
-  const [isRemove, setIsRemove] = useState(false);
+  const [isRemove, setIsRemove] = useState(true);
 
   const handlerCollection = async (event) => {
     event.preventDefault();
@@ -22,7 +22,7 @@ const RemoveCollectionButton = ({ anime_mal_id, user_email, anime_image, anime_t
       };
       
       if (response.status === 204) {
-        setIsRemove(true);
+        setIsRemove(false);
       } else {
         const collection = await response.json();
         
@@ -33,15 +33,16 @@ const RemoveCollectionButton = ({ anime_mal_id, user_email, anime_image, anime_t
     } catch (e) {
       throw new Error(e.message);
     };
+    console.log(`remove ${isRemove}`)
   };
 
   return (
     <>
       { isRemove ?
-          <AddCollectionButton anime_mal_id={anime_mal_id} user_email={user_email} anime_image={anime_image} anime_title={anime_title}/> :
           <button onClick={handlerCollection}>
             <Bookmark size={32} className="text-color-accent"/>
-          </button>
+          </button> :
+          <AddCollectionButton anime_mal_id={anime_mal_id} user_email={user_email} anime_image={anime_image} anime_title={anime_title}/>
       }
     </>
   );
